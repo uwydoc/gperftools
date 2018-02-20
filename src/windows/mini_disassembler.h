@@ -37,7 +37,7 @@
 #ifndef GOOGLE_PERFTOOLS_MINI_DISASSEMBLER_H_
 #define GOOGLE_PERFTOOLS_MINI_DISASSEMBLER_H_
 
-#include "config.h"
+#include <config.h>
 #include <windows.h>
 #include "mini_disassembler_types.h"
 

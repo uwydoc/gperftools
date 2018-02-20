@@ -403,7 +403,7 @@ check_cxx_source_compiles(
   "#include <string>
      #include <vector>
      int main() { pthread_t th; pthread_join(th, 0); return 0; }"
-  have_pthread_despite_asking_for)
+  HAVE_PTHREAD_DESPITE_ASKING_FOR)
 
 check_cxx_source_compiles(
   "#include <vector>
@@ -556,7 +556,7 @@ if(MINGW)
   target_link_libraries(spinlock PUBLIC windows)
   target_link_libraries(sysinfo PUBLIC shlwapi)
 
-  if(have_pthread_despite_asking_for)
+  if(HAVE_PTHREAD_DESPITE_ASKING_FOR)
     add_library(maybe_threads src/maybe_threads.cc)
     gperftools_add_target(maybe_threads)
     set(maybe_threads_lib maybe_threads)

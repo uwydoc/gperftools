@@ -38,7 +38,7 @@
 #ifndef GOOGLE_PERFTOOLS_PREAMBLE_PATCHER_H_
 #define GOOGLE_PERFTOOLS_PREAMBLE_PATCHER_H_
 
-#include "config.h"
+#include <config.h>
 #include <windows.h>
 
 // compatibility shim

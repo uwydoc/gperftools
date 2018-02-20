@@ -61,6 +61,8 @@
 
 #cmakedefine HAVE_PTHREAD
 
+#cmakedefine HAVE_PTHREAD_DESPITE_ASKING_FOR
+
 #cmakedefine HAVE_PWD_H
 
 #cmakedefine HAVE_SBRK
@@ -154,7 +156,8 @@
 #cmakedefine WIN32
 #if defined(WIN32)
 #ifndef PERFTOOLS_DLL_DECL
-# define PERFTOOLS_IS_A_DLL  1   # define PERFTOOLS_DLL_DECL  __declspec(dllexport)
+# define PERFTOOLS_IS_A_DLL  1
+# define PERFTOOLS_DLL_DECL  __declspec(dllexport)
 # define PERFTOOLS_DLL_DECL_FOR_UNITTESTS  __declspec(dllimport)
 #endif
 #else
@@ -196,12 +199,12 @@
 
 #define NO_HEAP_CHECK 1
 
-#include "windows/port.h"
-
-#endif
-
 #ifdef __MINGW32__
 #include "windows/mingw.h"
+#else
+#include "windows/port.h"
+#endif
+
 #endif
 
 #endif
