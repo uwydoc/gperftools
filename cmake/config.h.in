@@ -202,6 +202,7 @@
 #ifdef __MINGW32__
 #include "windows/mingw.h"
 #else
+#define GOOGLE_PERFTOOLS_WINDOWS_CONFIG_H_
 #include "windows/port.h"
 #endif
 

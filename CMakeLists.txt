@@ -18,7 +18,7 @@ set(need_nanosleep ON)
 
 set(host string(TOLOWER "${CMAKE_SYSTEM_NAME}"))
 
-if(MINGW)
+if(MINGW OR MSVC)
   set(default_build_minimal ON)
   set(default_build_debugalloc OFF)
   set(need_nanosleep OFF)
@@ -506,6 +506,8 @@ endif()
 
 if(MINGW)
   list(APPEND tcmalloc_lib_options "-Wl,-u__tcmalloc")
+#else(MSVC)
+#  list(APPEND tcmalloc_lib_options "/INCLUDE:__tcmalloc")
 endif()
 
 if(objcopy_exe)
@@ -540,7 +542,7 @@ add_library(spinlock
   src/base/atomicops-internals-x86.cc)
 target_link_libraries(spinlock PUBLIC sysinfo ${nanosleep_libs})
 
-if(MINGW)
+if(MINGW OR MSVC)
   add_library(windows
     src/windows/port.cc
     src/windows/system-alloc.cc
