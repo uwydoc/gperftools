@@ -330,7 +330,7 @@ inline int perftools_vsnprintf(char *str, size_t size, const char *format,
 #endif
 
 #ifndef HAVE_SNPRINTF
-inline int snprintf(char *str, size_t size, const char *format, ...) {
+inline int perftools_snprintf(char *str, size_t size, const char *format, ...) {
   va_list ap;
   int r;
   va_start(ap, format);
@@ -338,6 +338,7 @@ inline int snprintf(char *str, size_t size, const char *format, ...) {
   va_end(ap);
   return r;
 }
+#define snprintf(s, n, fmt, ...) perftools_snprintf(s, n, fmt, __VA_ARGS__)
 #endif
 
 #define PRIx64  "I64x"
